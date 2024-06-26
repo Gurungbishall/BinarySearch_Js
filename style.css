@@ -1,0 +1,44 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    margin: 100px auto 50px;
+    max-width: 500px;
+    display: grid;
+    gap: 10px;
+    font-size: 20px;
+}
+
+input {
+    height: 40px;
+    padding-left: 8px;
+}
+
+button {
+    width: 80px;
+    height: 40px;
+}
+
+section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.operation {
+    margin: auto 50px;
+    display: flex;
+    gap: 20px;
+    max-height: 100vh;
+}
+
+.operation p {
+    border: 2px solid black;
+    height: 40px;
+    width: 40px;
+    text-align: center;
+    padding-top: 6px;
+}
