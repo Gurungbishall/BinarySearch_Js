@@ -31,21 +31,19 @@ const binary_search = (number, l, r, key) => {
 };
 
 const animation = (box) => {
-  const operation = document.getElementById("operation");
   let i = 0;
   console.log(box.length);
-  box.forEach((element) => {
-    i++;
-    console.log(i + "i");
-    if (box.length != i) {
+  const operation = document.getElementById("operation");
+  const div = document.createElement("div");
+  div.setAttribute("class", "sort");
+
+  if (box.length != i) {
+    box.forEach((element) => {
+      i++;
       const p = document.createElement("p");
       p.innerHTML = element;
-      operation.appendChild(p);
-    } else {
-      const p = document.createElement("p");
-      const br = document.createElement("br");
-      p.innerHTML = element;
-      operation.appendChild(p).insertAdjacentElement("afterend", br);
-    }
-  });
+      div.appendChild(p);
+    });
+    operation.appendChild(div);
+  }
 };
