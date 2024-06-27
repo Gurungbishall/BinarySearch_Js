@@ -5,16 +5,48 @@
 }
 
 .container {
-    margin: 100px auto 50px;
-    max-width: 500px;
+    height: 400px;
+    width: 600px;
     display: grid;
     gap: 10px;
+    margin: 50px auto 50px;
+    padding: 10px;
     font-size: 20px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 5px black;
+    justify-content: center;
+    align-items: center;
 }
+
+.container div {
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+    font-family: monospace;
+    animation-name: header;
+    animation-duration: 4s;
+    position: relative;
+    color: black;
+}
+
+@keyframes header {
+    0% {
+        color: red;
+        top: -50px;
+    }
+
+    100% {
+        color: black;
+        left: 0px;
+        top: 0px;
+    }
+}
+
 
 input {
     height: 40px;
     padding-left: 8px;
+    width: 500px;
 }
 
 button {
@@ -22,14 +54,33 @@ button {
     height: 40px;
 }
 
-section p {
-    border: 2px solid black;
-    height: 40px;
-    width: 40px;
+.container_operation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.sort{
+
+.sort {
     display: flex;
-    gap: 10px;
+    gap: 15px;
     margin-top: 10px;
+}
+
+.sort p {
+    padding-top: 18px;
+    font-size: 20px;
+    font-weight: 900;
+    margin-right: 20px;
+}
+
+.sort div {
+    height: 60px;
+    width: 60px;
+    text-align: center;
+    padding-top: 18px;
+    font-size: 20px;
+    border: 2px solid black;
+    border-radius: 10px;
+
 }

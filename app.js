@@ -1,49 +1,53 @@
-const sort = () => {
+let i;
+const search = () => {
+  i = 1;
   const string = document.getElementById("number");
   const error = document.getElementById("error");
   const key = document.getElementById("key").value;
-
+  const operation = document.getElementById("operation");
+  operation.innerHTML = "";
   if (key != "" && string.value.length != 0) {
-    const number = string.value.split(",");
+    const number = string.value.split(",").map(Number);
     binary_search(number, 0, number.length - 1, key);
   } else
     error.innerText = "You have not enter the number. Please enter the number";
 };
 
 const binary_search = (number, l, r, key) => {
-  const result = document.getElementById("result");
   const box = number.slice(l, r + 1);
   animation(box);
   var flag = 0;
-  let m;
   if (l <= r) {
-    m = Math.floor((l + r) / 2);
-    if (key == number[m]) {
+    const mid = l + Math.floor((r - l) / 2);
+    if (key == number[mid]) {
+      i++;
       flag = key;
       error.innerText = "found";
-    } else if (key < number[m]) {
-      return binary_search(number, l, m - 1, key);
+    } else if (key < number[mid]) {
+      i++;
+      setTimeout(() => binary_search(number, l, mid - 1, key), 1000);
     } else {
-      return binary_search(number, m + 1, r, key);
+      i++;
+      setTimeout(() => binary_search(number, mid + 1, r, key), 1000);
     }
   }
   if (flag != key) error.innerText = "Not found";
 };
 
 const animation = (box) => {
-  let i = 0;
-  console.log(box.length);
   const operation = document.getElementById("operation");
   const div = document.createElement("div");
   div.setAttribute("class", "sort");
 
-  if (box.length != i) {
-    box.forEach((element) => {
-      i++;
-      const p = document.createElement("p");
-      p.innerHTML = element;
-      div.appendChild(p);
-    });
-    operation.appendChild(div);
-  }
+  const inner_div = document.createElement("p");
+  inner_div.innerHTML = "Step:" + i;
+  div.appendChild(inner_div);
+
+  box.forEach((element) => {
+    const inner_div = document.createElement("div");
+    inner_div.innerHTML = element;
+    div.appendChild(inner_div);
+  });
+  console.log(i);
+  operation.appendChild(div);
 };

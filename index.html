@@ -5,10 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="style.css" />
+    
   </head>
   <body>
     <div class="container">
-      <label for="Binary_search">Binary_search</label>
+      <div> BINARY SEARCH</div>
+      <label for="Binary_search">Enter the Elements</label>
       <input type="text" id="number" placeholder="Numbers to be sort" />
       <label for="">Key</label>
       <input
@@ -16,11 +18,14 @@
         id="key"
         placeholder="Which number you want to search"
       />
-      <button onclick="sort()">Sorting</button>
+      <button onclick="search()">Searching</button>
       <span id="error" style="font-size: 18px"></span>
+
     </div>
-    <section id="operation" class="operation">
-    </section>
+    <div class="container_operation">
+         <div id="operation" class="operation">
+    </div>
+  </div>
   </body>
   <script src="app.js"></script>
 </html>
