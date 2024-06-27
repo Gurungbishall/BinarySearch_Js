@@ -6,6 +6,8 @@ const search = () => {
   const key = document.getElementById("key").value;
   const operation = document.getElementById("operation");
   operation.innerHTML = "";
+  error.innerHTML = "";
+
   if (key != "" && string.value.length != 0) {
     const number = string.value.split(",").map(Number);
     binary_search(number, 0, number.length - 1, key);
@@ -15,14 +17,14 @@ const search = () => {
 
 const binary_search = (number, l, r, key) => {
   const box = number.slice(l, r + 1);
-  animation(box);
   var flag = 0;
   if (l <= r) {
+    animation(box);
     const mid = l + Math.floor((r - l) / 2);
     if (key == number[mid]) {
       i++;
       flag = key;
-      error.innerText = "found";
+      error.innerHTML = "The number " + key + " is there in the array";
     } else if (key < number[mid]) {
       i++;
       setTimeout(() => binary_search(number, l, mid - 1, key), 1000);
@@ -30,8 +32,10 @@ const binary_search = (number, l, r, key) => {
       i++;
       setTimeout(() => binary_search(number, mid + 1, r, key), 1000);
     }
+  } else {
+    if (flag != key)
+      error.innerHTML = "The number " + key + " is not there in the array";
   }
-  if (flag != key) error.innerText = "Not found";
 };
 
 const animation = (box) => {
