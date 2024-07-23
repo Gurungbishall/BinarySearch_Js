@@ -1,6 +1,15 @@
-let i;
-const search = () => {
-  i = 1;
+let i = 0;
+let animationTimeout;
+
+const btn = document.getElementById("btn");
+
+btn.addEventListener("click", (event) => {
+  event.preventDefault();
+
+  i = 0;
+
+  clearTimeout(animationTimeout);
+
   const string = document.getElementById("number");
   const error = document.getElementById("error");
   const key = document.getElementById("key").value;
@@ -13,28 +22,26 @@ const search = () => {
     binary_search(number, 0, number.length - 1, key);
   } else
     error.innerText = "You have not enter the number. Please enter the number";
-};
+});
 
-const binary_search = (number, l, r, key) => {
-  const box = number.slice(l, r + 1);
-  var flag = 0;
+const binary_search = (numbers, l, r, key) => {
   if (l <= r) {
-    animation(box);
     const mid = l + Math.floor((r - l) / 2);
-    if (key == number[mid]) {
-      i++;
-      flag = key;
-      error.innerHTML = "The number " + key + " is there in the array";
-    } else if (key < number[mid]) {
-      i++;
-      setTimeout(() => binary_search(number, l, mid - 1, key), 1000);
-    } else {
-      i++;
-      setTimeout(() => binary_search(number, mid + 1, r, key), 1000);
-    }
+    animationTimeout = setTimeout(() => {
+      animation(numbers.slice(l, r + 1), l, r, mid);
+      if (numbers[mid] == key) {
+        i++;
+        error.innerHTML = `The number ${key} is found in the array.`;
+      } else if (numbers[mid] > key) {
+        i++;
+        binary_search(numbers, l, mid - 1, key);
+      } else {
+        i++;
+        binary_search(numbers, mid + 1, r, key);
+      }
+    }, 1000);
   } else {
-    if (flag != key)
-      error.innerHTML = "The number " + key + " is not there in the array";
+    error.innerHTML = `The number ${key} is not found in the array.`;
   }
 };
 
